@@ -3,7 +3,8 @@ import Search from './Search'
 import CustomButtons from './CustomButtons'
 const StyledHeader = styled(AppBar)({
     background:'#2874f0',
-    height:'56px'
+    height:'56px',
+    boxShadow:'none'
 })
 const BoxStyle = styled(Box)({
     marginLeft:'12%',

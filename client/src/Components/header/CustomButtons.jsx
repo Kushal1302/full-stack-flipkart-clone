@@ -23,6 +23,7 @@ box-shadow:none;
 &:hover{
     background:#fff ;
 }
+font-weight:bold;
 `
 const CustomButtons = () => {
     return (<>
