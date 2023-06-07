@@ -1,8 +1,10 @@
 const express = require('express')
 require('./database/db.js')
 const DefaultData = require('./default.js')
+const router = require('./router/route')
 app = express()
 
 app.use(express.json())
+app.use(router)
 app.listen(8000 , () => console.log("Server Has Started"))
 DefaultData()

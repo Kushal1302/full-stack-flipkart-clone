@@ -9,6 +9,7 @@ justify-content:space-between;
 const Container = styled(Box)`
 padding:12px 8px;
 text-align:center;
+cursor:pointer;
 `
 const Text = styled(Typography)`
    font-size:14px;
