@@ -28,7 +28,7 @@ const Banner = () => {
   infinite={true}
   autoPlay={true}
   autoPlaySpeed={4000}
-  slidesToSlide={true}
+  slidesToSlide={1}
   
   
 

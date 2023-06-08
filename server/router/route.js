@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../model/signup-schema.js')
+const Product = require('../model/product-schema.js')
 
 router.post('/signup' , async (req , res) => {
     try {
@@ -37,6 +38,14 @@ router.post('/login' , async(req , res) => {
         }
     } catch (error) {
         console.log("Error while Login User")
+    }
+})
+router.get('/product' , async(req, res) => {
+    try {
+        const data = await Product.find({})
+        return res.send(data)
+    } catch (error) {
+        return res.send({error:error.message})
     }
 })
 module.exports = router

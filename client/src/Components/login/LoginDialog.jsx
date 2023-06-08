@@ -156,7 +156,7 @@ const LoginDialog = ({open , setOpen}) => {
                     </Wrapper>
                     
                 :
-                <>
+                
                     
                 <Wrapper>
                     <TextField variant='standard' label='Enter Firstname' onChange={onInputChange} name='firstname' />
@@ -169,7 +169,7 @@ const LoginDialog = ({open , setOpen}) => {
                     
 
                 </Wrapper>
-                </>
+                
                 }
             </Component>
         </Dialog>
