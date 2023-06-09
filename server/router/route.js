@@ -48,4 +48,15 @@ router.get('/product' , async(req, res) => {
         return res.send({error:error.message})
     }
 })
+
+router.get('/product/:id' , async (req , res) => {
+    try {
+        const id = req.params.id
+        const resData = await Product.findOne({'id':id})
+        console.log(resData)
+        return res.send(resData)
+    } catch (error) {
+        return res.send({message:"Failure"})
+    }
+})
 module.exports = router

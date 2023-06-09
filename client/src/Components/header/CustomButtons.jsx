@@ -1,21 +1,52 @@
-import { Button , Box , Typography } from "@mui/material"
+import { Button , Box ,createTheme, Typography } from "@mui/material"
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import styled from "@emotion/styled";
 import LoginDialog from "../login/LoginDialog";
 import {  useState , useContext } from "react";
 import { DataContext } from "../../context/DataProvider";
-import Profile from './Profile'
-const Wrapper = styled(Box)`
-display:flex;
-align-items:center;
-justify-content:space-around;
-margin:0 auto 0 3%;
-& > button , & > p , & > div{
-    font-size:14px;
-    margin-left:35px;
-}
-cursor:pointer;
-`
+import Profile from './Profile';
+const theme = createTheme({
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 900,
+        lg: 1200,
+        xl: 1536,
+      },
+    },
+  });
+const Wrapper = styled(Box)(({theme}) => ({
+    display:'flex',
+    alignItems:'center',
+    justifyContent:'space-around',
+    margin:'0 0 0 auto',
+    '& > button , & > p , & > div' :{
+    fontSize:'14px',
+    marginLeft:35,
+},
+    cursor:'pointer',
+    [theme.breakpoints.down('md')]:
+    {
+        // display:'none'
+        display:'block',
+        '& > p , & > div  ':{
+            margin:0,
+            marginTop:10,
+            fontSize:16
+        },
+        '& > button':{
+            marginRight:20,
+            marginLeft:0,
+            background:'#ff9f00',
+            color:'#fff'
+        }
+
+        
+        
+
+    }
+}))
 const LoginButton = styled(Button)`
 padding:5px 40px;
 height:32px;
@@ -33,7 +64,7 @@ const CustomButtons = () => {
     const [open , setOpen] = useState(false)
     const {account, setAccount} = useContext(DataContext)
     return (<>
-       <Wrapper>
+       <Wrapper theme= {theme}>
         {
             account ? <Profile account = {account} setAccount = {setAccount}/> : <LoginButton variant="contained" onClick={() => setOpen(true)}>Login</LoginButton>
         }

@@ -1,7 +1,7 @@
 import Carousel from 'react-multi-carousel'
 import "react-multi-carousel/lib/styles.css";
 import { bannerData } from '../../constants/data';
-import styled from '@emotion/styled';
+import {createTheme ,styled} from '@mui/material';
 const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -16,10 +16,28 @@ const responsive = {
       items: 1
     }
   };
-  const Image = styled('img')({
+  const theme = createTheme({
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 900,
+        lg: 1200,
+        xl: 1536,
+      },
+    },
+  });
+  const Image = styled('img')(({theme}) => ({
     width:'100%',
-    height:'280px'
-  })
+    height:'280px',
+    [theme.breakpoints.down('md')]:
+    {
+      
+      objectFit:'cover',
+      height:180
+    }
+
+  }))
 const Banner = () => {
     return (<>
     <Carousel swipeable={false}
@@ -37,7 +55,7 @@ const Banner = () => {
 >
         {
             bannerData.map(data => (
-                <Image src={data.url} alt="" />
+                <Image src={data.url} alt="" theme={theme} />
             ))
         }
 

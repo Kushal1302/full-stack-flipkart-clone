@@ -2,21 +2,22 @@ import styled from "@emotion/styled";
 import { Box, Button, Divider, Typography } from "@mui/material";
 import Carousel from "react-multi-carousel"
 import Countdown from 'react-countdown';
-
+import { Link } from "react-router-dom";
 const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 5
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 3
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1
-    }
-  };
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 5
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 3
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1
+  }
+};
+
   const Component = styled(Box)`
     margin-top:10px;
     background:#fff;
@@ -60,18 +61,22 @@ const responsive = {
   const Text = styled(Typography)`
     font-size:14px;
     margin-top:5px;
+  
   `
-const Slide = ({products}) => {
+const Slide = ({products , title , timer}) => {
+  
     const timerURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/timer_a73398.svg';
     return (
         <Component>
             <Deal>
-                <DealText>Deal of the day</DealText>
-                <Timer>
-                    <img src={timerURL} alt="" width={24} />
-                    <Countdown date={Date.now() + 4.32e+7} renderer={renderer}/>
-                </Timer>
-                <ViewAllButton variant="contained">View All</ViewAllButton>
+                <DealText>{title}</DealText>
+                {
+                  timer && <Timer>
+                              <img src={timerURL} alt="" width={24} />
+                              <Countdown date={Date.now() + 4.32e+7} renderer={renderer}/>
+                          </Timer>
+                }
+                <ViewAllButton variant="contained" component={Link} to={'/viewall'}>View All</ViewAllButton>
             </Deal>
             <Divider/>
             <Carousel
@@ -85,9 +90,9 @@ const Slide = ({products}) => {
                 itemClass="carousel-item-padding-40-px">
             {
                 products.map(product => (
-                    <Box textAlign='center' style={{padding:'25px 15px'}}>
+                    <Box textAlign='center' style={{padding:'25px 15px' , textDecoration:'none' , display:'flex' , alignItems:'center' , flexDirection:'column'}} component={Link} to={`/product/${product.id}`}>
                         <Image src={product.url} alt="Product" />
-                        <Text >{product.title.shortTitle}</Text>
+                        <Text color={"black"} fontWeight='600'>{product.title.shortTitle}</Text>
                         <Text color='green'>{product.discount}</Text>
                         <Text color='#7f7f7f'>{product.tagline}</Text>
                     </Box>
