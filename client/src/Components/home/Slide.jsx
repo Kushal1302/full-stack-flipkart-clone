@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 5
+    items: 6
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
@@ -72,7 +72,7 @@ const Slide = ({products , title , timer}) => {
                 <DealText>{title}</DealText>
                 {
                   timer && <Timer>
-                              <img src={timerURL} alt="" width={24} />
+                              <img src={timerURL} alt="" width={24} />&nbsp;
                               <Countdown date={Date.now() + 4.32e+7} renderer={renderer}/>
                           </Timer>
                 }

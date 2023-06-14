@@ -124,6 +124,24 @@
         description: 'Let music brighten up your mood anytime, anywhere with the boAt 235v2 Fast Charging Bluetooth Headset. This Bluetooth headset features a Call Vibration Alert, a Fast Charging Technology, and Easy Access Controls to listen to and manage your favorite music with ease.',
         discount: 'Minimum 50% Off', 
         tagline: 'Grab Now!' 
+    },
+    {
+        id:'product8',
+        url:'https://rukminim1.flixcart.com/image/312/312/k9loccw0/mobile/p/z/q/apple-iphone-se-mxd02hn-a-original-imafrcpjyscxm8fv.jpeg?q=70',
+        detailUrl:'https://rukminim1.flixcart.com/image/416/416/k9loccw0/mobile/p/z/q/apple-iphone-se-mxd02hn-a-original-imafrcpjyscxm8fv.jpeg?q=70',
+        title:{
+            shortTitle:'Apple IPhone SE 2020',
+            longTitle:'APPLE iPhone SE (Black, 64 GB)'
+        },
+        price:{
+            mrp:39900,
+            cost:28990,
+            discount:'27%'
+        },
+        quantity:1,
+        description:'NA',
+        discount: 'Minimum 27% Off', 
+        tagline:'Limited time offer'
     }
 ];
 module.exports = products

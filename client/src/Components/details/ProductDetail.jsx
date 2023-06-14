@@ -21,6 +21,7 @@ const ColumnText = styled(TableRow)`
     & > td {
         font-size:14px;
         border:none;
+        
     }
 `
 const ProductDetail = ({product}) => {

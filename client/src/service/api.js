@@ -14,3 +14,19 @@ export const checkLoginUser = async (data) => {
         console.log(error.message)
     }
 }
+export const addToCart = async(product) => {
+    try {
+        return await axios.post('/cart' , product)
+
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+export const removeItem = async (id) => {
+    try {
+        return await axios.delete(`/deleteItem/${id}`)
+        
+    } catch (error) {
+        console.log(error.message)
+    }
+}

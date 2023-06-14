@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const User = require('../model/signup-schema.js')
 const Product = require('../model/product-schema.js')
+const Cart = require('../model/Cart-schema.js')
 
 router.post('/signup' , async (req , res) => {
     try {
@@ -53,10 +54,43 @@ router.get('/product/:id' , async (req , res) => {
     try {
         const id = req.params.id
         const resData = await Product.findOne({'id':id})
-        console.log(resData)
+        // console.log(resData)
         return res.send(resData)
     } catch (error) {
         return res.send({message:"Failure"})
+    }
+})
+router.post('/cart' , async(req , res) => {
+    try {
+        const {id} = req.body
+        const checkData = await Cart.findOne({'id':id})
+        if(checkData != null){
+            return res.send({message:"Already Added"})
+        }
+        const data = await Cart(req.body)
+        data.save()
+        return res.send({message:'Item added Successfully'})
+    } catch (error) {
+        return res.send({message:error.message})
+    }
+})
+router.get('/cart' , async(req , res) => {
+    try {
+        const data = await Cart.find({}) 
+        return res.send({message:"Data Collected" , data:data})
+    } catch (error) {
+        return res.send({message:error.message})
+    }
+})
+router.delete('/deleteItem/:id' , async(req , res) => {
+    try {
+        const id = req.params.id
+        
+        
+        await Cart.deleteMany({'id' : id})
+        
+    } catch (error) {
+        console.log(error.message)
     }
 })
 module.exports = router

@@ -5,6 +5,7 @@ import LoginDialog from "../login/LoginDialog";
 import {  useState , useContext } from "react";
 import { DataContext } from "../../context/DataProvider";
 import Profile from './Profile';
+import { Link } from "react-router-dom";
 const theme = createTheme({
     breakpoints: {
       values: {
@@ -21,7 +22,7 @@ const Wrapper = styled(Box)(({theme}) => ({
     alignItems:'center',
     justifyContent:'space-around',
     margin:'0 0 0 auto',
-    '& > button , & > p , & > div' :{
+    '& > button , & > p , & > a' :{
     fontSize:'14px',
     marginLeft:35,
 },
@@ -30,7 +31,7 @@ const Wrapper = styled(Box)(({theme}) => ({
     {
         // display:'none'
         display:'block',
-        '& > p , & > div  ':{
+        '& > p , & > a ':{
             margin:0,
             marginTop:10,
             fontSize:16
@@ -70,10 +71,9 @@ const CustomButtons = () => {
         }
         <Typography>Become a Seller</Typography>
         <Typography>More</Typography>
-        <Box style = {{display:'flex' }}>
+        <Box style = {{display:'flex' , textDecoration:'none' , color:'inherit' }} component={Link} to={'/cart'}>
             <ShoppingCartIcon style={{height:'18px' , width:'18px' , marginRight:2}}/>
             <Typography style={{fontSize:'14px'}}>Cart</Typography>
-
         </Box>
        </Wrapper>
        <LoginDialog open = {open} setOpen = {setOpen}/>

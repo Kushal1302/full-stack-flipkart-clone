@@ -40,7 +40,7 @@ const RightComponent  = styled(Box)(({theme}) => ({
 
 
 const MidSlide = ({ products ,title , timer}) => {
-    const adURL = 'https://rukminim1.flixcart.com/flap/464/708/image/633789f7def60050.jpg?q=70';
+    const adURL = 'https://rukminim1.flixcart.com/fk-p-flap/464/708/image/c403e95f9584da6b.jpg?q=70';
 
     return (<>
     <Component>

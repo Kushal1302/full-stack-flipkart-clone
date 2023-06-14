@@ -2,6 +2,8 @@ import styled from "@emotion/styled"
 import { Box, Button ,  createTheme} from "@mui/material"
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
+import {useNavigate} from 'react-router-dom'
+import { addToCart } from "../../service/api";
 const theme = createTheme({
     breakpoints: {
       values: {
@@ -48,15 +50,24 @@ const LeftComponent = styled(Box)(({theme}) => ({
 
     }
     }))
+    
         
     
 const ActionItem = ({product}) => {
+    const navigate = useNavigate()
+    const AddItemToCart = async() => {
+        const res = await addToCart(product)
+        window.alert(res.data.message)
+        navigate('/cart')
+        
+        
+    }
     return (
         <LeftComponent theme={theme}>
             <Box style={{ width:'90%' , padding:'15px'}} >
                 <Image src={product.detailUrl} alt="" />
             </Box>
-            <StyledButton theme={theme} variant="contained" style={{marginRight:10 , background:'#ff9f00'}}>
+            <StyledButton theme={theme} variant="contained" style={{marginRight:10 , background:'#ff9f00'}} onClick={() => AddItemToCart(product)}>
                 <ShoppingCartIcon style={{marginRight:5}}/>
                 Add to Cart
             </StyledButton>
